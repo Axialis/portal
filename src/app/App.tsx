@@ -3,11 +3,13 @@ import './App.css';
 import { Header } from '../components/header/Header';
 import { Footer } from '../components/footer/Footer';
 import { Content } from '../content/Contents';
+import { MenuSite } from '../components/menu-site/MenuSite';
 
 function App() {
   return (
     <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
     <Header></Header>
+    <MenuSite></MenuSite>
     <Content></Content>
     <Footer></Footer>
     </div>
