@@ -2,7 +2,7 @@ import Sider from 'antd/lib/layout/Sider';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import React, { useState } from 'react';
-import './style.css'
+import {NavLink} from "react-router-dom";
 
 import {
   ApiOutlined,
@@ -28,18 +28,21 @@ function getItem(
 
 const items: MenuItem[] = [
   getItem('Amplifies', 'sub1', <ApiOutlined />, [
-    getItem('E Class', '1'),
-    getItem('F Class', '2'),
-    getItem('EF2 Class', '3'),
+    getItem( <NavLink to="A_Class">A Class</NavLink>, '1'),
+    getItem( <NavLink to="AB_Class">AB Class</NavLink>, '2'),
+    getItem( <NavLink to="D_Class">D Class</NavLink>, '3'),
+    getItem( <NavLink to="E_Class">E Class</NavLink>, '4'),
+    getItem( <NavLink to="F_Class">F Class</NavLink>, '5'),
+    getItem( <NavLink to="EF2_Class">EF2 Class</NavLink>, '6'),
   ]),
 
   getItem('Calculators', 'sub2', <CalculatorOutlined />, [
-    getItem('Capacitors', '4'),
-    getItem('Inductors', '5'),
+    getItem( <NavLink to="Capacitors">Capacitors</NavLink>, '7'),
+    getItem( <NavLink to="Inductors">Inductors</NavLink>, '8'),
   ]),
 
   getItem('Graphs', 'sub3', <ReadOutlined />, [
-    getItem('Berg', '6'),
+    getItem( <NavLink to="Berg">Berg</NavLink>, '9'),
   ]),
 ];
 
@@ -61,7 +64,6 @@ export function SideBar() {
 
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
-      <div className="logo" />
       <div>
         <Menu
           mode="inline"
