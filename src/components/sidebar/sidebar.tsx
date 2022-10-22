@@ -31,7 +31,7 @@ const items: MenuItem[] = [
     // getItem( <NavLink to="A_Class">A Class</NavLink>, '1'),
     // getItem( <NavLink to="AB_Class">AB Class</NavLink>, '2'),
     // getItem( <NavLink to="D_Class">D Class</NavLink>, '3'),
-    // getItem( <NavLink to="E_Class">E Class</NavLink>, '4'),
+    getItem( <NavLink to="E_Class">E Class</NavLink>, '4'),
     // getItem( <NavLink to="F_Class">F Class</NavLink>, '5'),
     // getItem( <NavLink to="EF2_Class">EF2 Class</NavLink>, '6'),
   ]),

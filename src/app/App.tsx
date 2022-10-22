@@ -7,6 +7,7 @@ import { SideBar } from '../components/sidebar/sidebar';
 import { Basement } from '../components/basement/basement';
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { Berg } from '../pages/berg/berg';
+import { Eclass } from '../pages/eclass/eclass';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
               <Route path='A_Class' element={<Main />} />
               <Route path='AB_class' element={<Main />} />
               <Route path='D_Class' element={<Main />} />
-              <Route path='E_Class' element={<Main />} />
+              <Route path='E_Class' element={<Eclass />} />
               <Route path='F_Class' element={<Main />} />
               <Route path='EF2_Class' element={<Main />} />
               <Route path='Capacitors' element={<Main />} />
