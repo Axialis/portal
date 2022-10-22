@@ -1,10 +1,21 @@
-import React from 'react';
 import './App.css';
+import 'antd/dist/antd.min.css'
+import Layout from 'antd/lib/layout/layout';
+import { Header } from 'antd/lib/layout/layout';
+import { Main } from '../pages/main/main';
+import { SideBar } from '../components/sidebar/sidebar';
+import { Basement } from '../components/basement/basement';
 
 function App() {
   return (
-    <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
-    </div>
+    <Layout style={{ minHeight: '100vh' }}>
+      <SideBar></SideBar>
+      <Layout>
+        <Header>Header</Header>
+        <Main></Main>
+        <Basement></Basement>
+      </Layout>
+    </Layout>
 
   );
 }
