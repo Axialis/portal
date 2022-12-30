@@ -25,8 +25,8 @@ function calculate() {
     R = 0.5768 * (Math.pow(Voltage, 2) / Power);
     L1 = 2 * (1 + Math.pow(Math.PI, 2) / 4) * (R / Frequency);
     L2 = (QFactor * R) / (2 * Math.PI * Frequency);
-    C2 = 1 / (2 * Math.PI * Frequency * (QFactor - ((Math.PI * (Math.pow(Math.PI, 2) - 4)) / 16)));
-    C1 = 8 / (Math.PI * (Math.pow(Math.PI, 2) + 4) * 2 * Math.PI * Frequency);
+    C2 = 1 / (2 * Math.PI * Frequency * R * (QFactor - ((Math.PI * (Math.pow(Math.PI, 2) - 4)) / 16)));
+    C1 = 8 / (Math.PI * (Math.pow(Math.PI, 2) + 4) * 2 * Math.PI * Frequency * R);
   }
 }
 
@@ -56,7 +56,7 @@ export function Eclass() {
               wrapperCol={{ span: 10 }}
               autoComplete="off"
             >
-              <Form.Item label="Supply Voltage" name="Supply Voltage" rules={[{ required: true }]}>
+              <Form.Item label="Supply Voltage, V" name="Supply Voltage" rules={[{ required: true }]}>
                 <Input
                   onInput={(el) => {
                     Voltage = Number((el.target as HTMLTextAreaElement).value);
@@ -64,14 +64,14 @@ export function Eclass() {
                     setParam(Voltage);
                   }} />
               </Form.Item>
-              <Form.Item label="Frequency" name="Frequency" rules={[{ required: true }]}>
+              <Form.Item label="Frequency, Hz" name="Frequency" rules={[{ required: true }]}>
                 <Input onInput={(el) => {
                   Frequency = Number((el.target as HTMLTextAreaElement).value);
                   calculate();
                   setParam(Frequency);
                 }} />
               </Form.Item>
-              <Form.Item label="Output Power" name="Output Power" rules={[{ required: true }]}>
+              <Form.Item label="Output Power, W" name="Output Power" rules={[{ required: true }]}>
                 <Input onInput={(el) => {
                   Power = Number((el.target as HTMLTextAreaElement).value);
                   calculate();
@@ -86,22 +86,23 @@ export function Eclass() {
                 }} />
               </Form.Item>
             </Form>
+            <Text strong mark>Q must be better then 2!</Text>            
           </Col>
           <Col xs={24} xl={8} style={{ padding: '40px' }}>
             <Row>
-              <Text strong>L1: {L1}</Text>
+              <Text>Lf: {`${(L1 * 10e5).toFixed(3)} uH`}</Text>
             </Row>
             <Row>
-              <Text strong>C1: {C1}</Text>
+              <Text>C1: {`${(C1 * 10e8).toFixed(3)} nF`}</Text>
             </Row>
             <Row>
-              <Text strong>C2: {C2}</Text>
+              <Text>C: {`${(C2 * 10e8).toFixed(3)} nF`}</Text>
             </Row>
             <Row>
-              <Text strong>L2: {L2}</Text>
+              <Text>L: {`${(L2 * 10e5).toFixed(3)} uH`}</Text>
             </Row>
             <Row>
-              <Text strong>R load: {R}</Text>
+              <Text>R: {`${R.toFixed(1)} Ω`}</Text>
             </Row>
           </Col>
           <Col xs={24} xl={12} style={{ padding: '40px' }}>
